@@ -11,6 +11,12 @@ checksumlist = {}
 hasherclass = hashlib.sha1
 BLOCKSIZE = 16384
 
+emptysums = [
+    "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "d41d8cd98f00b204e9800998ecf8427e",
+    "da39a3ee5e6b4b0d3255bfef95601890afd80709"
+]
+
 parser = ap(description = "List all files in a given location that have the same checksum.",
             epilog = """Copyright 2016 Eero Leno. This software is licensed \
                            under the MIT license.""")
@@ -25,6 +31,12 @@ parser.add_argument("--recursive", "-r",
                    required = False,
                    action = "store_true",
                    help = "Traverse subdirectories"
+                   )
+
+parser.add_argument("--all", "-a",
+                   required = False,
+                   action = "store_true",
+                   help = "Show all files (ignores empty files by default)"
                    )
 
 parser.add_argument("--hash",
@@ -116,7 +128,8 @@ for key, value in checksumlist.items():
     if value == None:
         print(key)
     elif len(value) > 1:
-        currColor = randomColor(lastColor)
-        for path in value:
-            print(currColor, key[:6], "\t ", path)
-        print("")
+        if key not in emptysums or args.all:
+            currColor = randomColor(lastColor)
+            for path in value:
+                print(currColor, key[:6], "\t ", path)
+            print("")

@@ -10,8 +10,10 @@ To search for duplicate files in current directory:
 To search for duplicate files in /var/log, traversing all subdirectories:
 `python sumcheck.py /var/log -r`
 
+To search for duplicate files, showing empty files:
+`python sumcheck.py -a`
 
-To search for duplicate files in ~/downloads, using md5:
+To search for duplicate files in ~/Downloads, using md5:
 `python sumcheck.py ~/Downloads --hash md5`
 
 Sample output:
