@@ -94,6 +94,8 @@ def getFiles(dir=False, recursive=False):
     return found
 
 def addFile(path):
+    if not isfile(path):
+        return
     md = getHash(path)
     if md in checksumlist:
         # For some reason python won't compute this with one line
