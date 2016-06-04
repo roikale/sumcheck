@@ -62,8 +62,6 @@ bcolors = [
     '\033[93m',
     '\033[91m',
     '\033[0m'
-    # '\033[1m', # bold
-    # '\033[4m' #underline
 ]
 
 def randomColor(last):
@@ -119,17 +117,14 @@ for file in files:
 
 print("")
 
-#for key in checksumlist:
-#    print(key, checksumlist[key])
-
 lastColor = ""
 
 for key, value in checksumlist.items():
-    if value == None:
-        print(key)
-    elif len(value) > 1:
+    if len(value) > 1:
         if key not in emptysums or args.all:
             currColor = randomColor(lastColor)
             for path in value:
                 print(currColor, key[:6], "\t ", path)
             print("")
+
+print("\033[0m") # reset terminal colors
