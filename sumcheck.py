@@ -129,4 +129,4 @@ for key, value in checksumlist.items():
                 print(currColor, key[:6], "\t ", path)
             print("")
 
-print("\033[0m") # reset terminal colors
+print("\033[0m", end="") # reset terminal colors
