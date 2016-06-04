@@ -64,6 +64,8 @@ bcolors = [
     '\033[0m'
 ]
 
+lastColor = ""
+
 def randomColor(last):
     current = last
     while current == last:
@@ -118,8 +120,6 @@ for file in files:
     print(indexed, "files indexed out of", total, "   \r", end="")
 
 print("")
-
-lastColor = ""
 
 for key, value in checksumlist.items():
     if len(value) > 1:
